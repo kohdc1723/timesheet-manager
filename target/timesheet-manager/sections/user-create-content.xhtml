@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>IGNORED</title>
+</head>
+<body>
+<ui:composition>
+    <h:form>
+        <p:panel header="Create Employee Account">
+            <p:panelGrid id="createForm">
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for="firstname" value="FirstName"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="firstname" value="#{employeeService.newEmployee.firstName}" required="true" requiredMessage="name field must be filled"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for="lastname" value="LastName"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="lastname" value="#{employeeService.newEmployee.lastName}" required="true" requiredMessage="name field must be filled"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for="username" value="UserName"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="username" value="#{employeeService.newEmployee.userName}" validator="#{employeeService.validateUserName}" required="true" requiredMessage="username field must be filled"/>
+                        <p:message for="username"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for="password" value="Password"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="password" value="#{employeeService.newEmployee.password}" required="true" requiredMessage="password field must be filled"/>
+                        <p:message for="password"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="2">
+                        <p:commandButton value="Submit" actionListener="#{employeeService.insertEmployee(employeeService.newEmployee)}" update="createForm" onsuccess="window.location.href='/timesheet-manager/user-list.xhtml'"/>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+        </p:panel>
+    </h:form>
+</ui:composition>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>IGNORED</title>
+</head>
+<body>
+<ui:composition>
+    <p:panel>
+        <p:dataTable id="timesheetTable" value="#{timesheetController.getTimesheets(authenticationController.token.employeeNumber)}" var="ts">
+            <f:facet name="header">
+                <h:outputText value="List of Timesheets"/>
+            </f:facet>
+
+            <p:column headerText="WeekEndDate">
+                <h:outputText value="#{ts.weekEndDate}"/>
+            </p:column>
+            <p:column headerText="TotalHours">
+                <h:outputText value="#{timesheetController.getTotalHours(ts)}"/>
+            </p:column>
+            <p:column headerText="OverTime">
+                <h:outputText value="#{timesheetController.getOverTime(ts)}"/>
+            </p:column>
+            <p:column>
+                <p:commandButton value="Detail" styleClass="ui-button-info" action="#{timesheetRowListForm.initTimesheetRowListForm(employeeService.getEmployee(authenticationController.token.employeeNumber), ts)}"/>
+            </p:column>
+            <p:column>
+                <p:commandButton value="Delete" styleClass="ui-button-danger" actionListener="#{timesheetController.deleteTimesheet(ts)}" update="timesheetTable"/>
+            </p:column>
+
+            <f:facet name="footer">
+                <h:outputText value="Total: #{timesheetController.getTimesheets(authenticationController.token.employeeNumber).size()}"/>
+            </f:facet>
+        </p:dataTable>
+        <h:form>
+            <p:panelGrid>
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for="weekEndDate" value="WeekEndDate (yyyy-mm-dd): "/>
+                        <p:inputText id="weekEndDate" placeholder="yyyy-mm-dd" value="#{timesheetController.newTimesheet.weekEndDate}" validator="#{timesheetController.validateTimesheet}" required="true" requiredMessage="end date must be filled">
+                            <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" locale="English" timeZone="GMT-7"/>
+                            <f:attribute name="currentEmployeeNumber" value="#{authenticationController.token.employeeNumber}"/>
+                        </p:inputText>
+                        <p:message for="weekEndDate"/>
+                    </p:column>
+                    <p:column>
+                        <p:commandButton value="Add" styleClass="ui-button-plain" action="#{timesheetController.insertTimesheet(timesheetController.newTimesheet)}" ajax="false"/>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+        </h:form>
+    </p:panel>
+</ui:composition>
+</body>
+</html>
