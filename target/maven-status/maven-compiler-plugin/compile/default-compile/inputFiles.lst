@@ -1,9 +1,7 @@
-/Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/controller/DatePicker.java
 /Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/model/EditableTimesheetRow.java
 /Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/enums/AuthenticationMessage.java
 /Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/Test.java
 /Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/client/TimesheetRowClient.java
-/Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/controller/EmployeeService.java
 /Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/model/Token.java
 /Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/model/Employee.java
 /Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/client/AuthenticationClient.java
@@ -15,6 +13,7 @@
 /Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/rest/AuthenticationManager.java
 /Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/model/TimesheetRow.java
 /Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/client/EmployeeClient.java
+/Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/controller/EmployeeController.java
 /Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/client/TimesheetClient.java
 /Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/model/Timesheet.java
 /Users/chan/Desktop/Workspace/timesheet-manager/src/main/java/controller/TimesheetRowListForm.java

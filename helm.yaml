@@ -1,0 +1,19 @@
+build:
+  uri: https://gitlab.infoteach.ca/kohdc/timesheet-manager.git
+  mode: s2i
+  ref: main
+  s2i:
+    version: latest
+    builderImage: quay.io/wildfly/wildfly-s2i-jdk17
+    runtimeImage: quay.io/wildfly/wildfly-runtime-jdk17
+deploy:
+  replicas: 1
+  env:
+    - name: MYSQL_DATABASE
+      value: timesheetdb
+    - name: MYSQL_USER
+      value: stock
+    - name: MYSQL_PASSWORD
+      value: check
+    - name: MYSQL_DATASOURCE
+      value: timesheetdb

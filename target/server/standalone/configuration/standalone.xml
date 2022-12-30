@@ -451,8 +451,8 @@
         <socket-binding name="txn-status-manager" port="4713"/>
     </socket-binding-group>
     <deployments>
-        <deployment name="timesheet-manager.war" runtime-name="timesheet-manager.war">
-            <content sha1="309a347dee75e499c3812458a1d52107510f39b4"/>
+        <deployment name="timesheet-manager.war" runtime-name="ROOT.war">
+            <content sha1="21a066c9bf282839f082f87abd5b5305475f158c"/>
         </deployment>
     </deployments>
 </server>

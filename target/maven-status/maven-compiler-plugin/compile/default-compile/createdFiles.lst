@@ -1,7 +1,7 @@
 rest/EmployeeManager.class
 Test.class
 client/TimesheetRowClient.class
-controller/EmployeeService.class
+controller/EmployeeController.class
 client/TimesheetClient$1.class
 controller/TimesheetController.class
 controller/AuthenticationController.class
@@ -15,7 +15,6 @@ model/Employee.class
 rest/TimesheetRowManager.class
 client/TimesheetRowClient$1.class
 model/Timesheet.class
-controller/DatePicker.class
 client/TimesheetClient.class
 model/TimesheetRow.class
 model/Credential.class
