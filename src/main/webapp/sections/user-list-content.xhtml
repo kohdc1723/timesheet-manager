@@ -11,9 +11,9 @@
 <ui:composition>
     <p:panel>
         <h:form>
-            <p:dataTable id="employeeTable" value="#{employeeService.getRegularEmployees()}" var="e">
+            <p:dataTable id="employeeTable" value="#{employeeController.getRegularEmployees()}" var="e">
                 <f:facet name="header">
-                    <h:outputText value="List of Employees"/>
+                    <h:outputText styleClass="font-bold" value="List of Employees"/>
                 </f:facet>
                 <p:column headerText="EmployeeNumber">
                     <h:outputText value="#{e.employeeNumber}"/>
@@ -28,15 +28,26 @@
                     <h:outputText value="#{e.userName}"/>
                 </p:column>
                 <p:column>
-                    <p:commandButton styleClass="ui-button-info" value="Edit" action="#{employeeService.setEditableEmployee(e)}"/>
+                    <p:commandButton icon="pi pi-user-edit" styleClass="ui-button-info" value="Edit" action="#{employeeController.setEditableEmployee(e)}"/>
                 </p:column>
                 <p:column>
-                    <p:commandButton styleClass="ui-button-danger" value="Delete" actionListener="#{employeeService.deleteEmployee(e.employeeNumber)}" update="employeeTable"/>
+                    <p:commandButton icon="pi pi-user-minus" styleClass="ui-button-danger" value="Delete" actionListener="#{employeeController.deleteEmployee(e.employeeNumber)}" update="employeeTable"/>
                 </p:column>
-                <f:facet name="footer">
-                    <h:outputText value="Total: #{employeeService.getRegularEmployees().size()} employees"/>
-                    <p:commandButton styleClass="ui-button-info" value="Add" action="/user-create"/>
-                </f:facet>
+
+                <p:columnGroup type="footer">
+                    <p:row>
+                        <p:column colspan="5">
+                            <f:facet name="footer">
+                                <h:outputText value="Total: #{employeeController.getRegularEmployees().size()} employees"/>
+                            </f:facet>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="footer">
+                                <p:commandButton icon="pi pi-user-plus" styleClass="ui-button-info" value="Create" action="/user-create"/>
+                            </f:facet>
+                        </p:column>
+                    </p:row>
+                </p:columnGroup>
             </p:dataTable>
         </h:form>
     </p:panel>

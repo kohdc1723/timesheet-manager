@@ -10,26 +10,11 @@
 <body>
 <ui:composition>
     <p:panel>
-        <p:panelGrid columns="8">
-            <f:facet name="header">
-                <h:outputText value="Timesheet Detail" />
-            </f:facet>
-
-            <h:outputLabel for="empNum" value="EmployeeNumber" />
-            <h:outputText id="empNum" value="#{timesheetRowListForm.referenceEmployee.employeeNumber}" />
-
-            <h:outputLabel for="firstname" value="FirstName" />
-            <h:outputText id="firstname" value="#{timesheetRowListForm.referenceEmployee.firstName}" />
-
-            <h:outputLabel for="lastname" value="LastName" />
-            <h:outputText id="lastname" value="#{timesheetRowListForm.referenceEmployee.lastName}" />
-
-            <h:outputLabel for="weekEndDate" value="WeekEndDate" />
-            <h:outputText id="weekEndDate" value="#{timesheetRowListForm.referenceTimesheet.weekEndDate}" />
-        </p:panelGrid>
-
         <h:form>
             <p:dataTable value="#{timesheetRowListForm.list}" var="tsr" id="timesheetRowListForm">
+                <f:facet name="header">
+                    <h:outputText styleClass="font-bold" value="TimesheetRow List of #{timesheetRowListForm.referenceTimesheet.weekEndDate}" />
+                </f:facet>
                 <p:column headerText="ProjectTitle">
                     <p:inputText value="#{tsr.timesheetRow.projectTitle}" rendered="#{tsr.editable}"/>
                     <h:outputText value="#{tsr.timesheetRow.projectTitle}" rendered="#{!tsr.editable}"/>
@@ -70,11 +55,11 @@
                     <h:outputText value="#{tsr.timesheetRow.notes}" rendered="#{!tsr.editable}"/>
                 </p:column>
                 <p:column>
-                    <p:commandButton styleClass="ui-button-danger" value="Delete" action="#{timesheetRowListForm.deleteTimesheetRow(tsr)}" rendered="#{!tsr.editable}" update="timesheetRowListForm"/>
+                    <p:commandButton icon="pi pi-trash" styleClass="ui-button-danger" value="Delete" action="#{timesheetRowListForm.deleteTimesheetRow(tsr)}" rendered="#{!tsr.editable}" update="timesheetRowListForm"/>
                 </p:column>
                 <p:column>
-                    <p:commandButton styleClass="ui-button-info" value="Edit" action="#{timesheetRowListForm.editTimesheetRow(tsr)}" rendered="#{!tsr.editable}" update="timesheetRowListForm"/>
-                    <p:commandButton styleClass="ui-button-info" value="Save" action="#{timesheetRowListForm.saveTimesheetRow(tsr)}" rendered="#{tsr.editable}" update="timesheetRowListForm"/>
+                    <p:commandButton icon="pi pi-file-edit" styleClass="ui-button-info" value="Edit" action="#{timesheetRowListForm.editTimesheetRow(tsr)}" rendered="#{!tsr.editable}" update="timesheetRowListForm"/>
+                    <p:commandButton icon="pi pi-save" styleClass="ui-button-info" value="Save" action="#{timesheetRowListForm.saveTimesheetRow(tsr)}" rendered="#{tsr.editable}" update="timesheetRowListForm"/>
                 </p:column>
 
                 <p:columnGroup type="footer">
@@ -126,7 +111,7 @@
                         </p:column>
                         <p:column>
                             <f:facet name="footer">
-                                <p:commandButton value="Add" action="#{timesheetRowListForm.addTimesheetRow()}" update="timesheetRowListForm"/>
+                                <p:commandButton icon="pi pi-plus" value="Add" action="#{timesheetRowListForm.addTimesheetRow()}" update="timesheetRowListForm"/>
                             </f:facet>
                         </p:column>
                     </p:row>

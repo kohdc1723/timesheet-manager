@@ -10,14 +10,22 @@
 <body>
 <ui:composition>
     <h:form>
-        <p:panel header="Create Employee Account">
-            <p:panelGrid id="createForm">
+        <p:panel>
+            <p:panelGrid styleClass="mx-auto" id="createForm">
+                <f:facet name="header">
+                    <p:row>
+                        <p:column colspan="2">
+                            <h:outputText value="Create New Employee"/>
+                        </p:column>
+                    </p:row>
+                </f:facet>
+
                 <p:row>
                     <p:column>
                         <p:outputLabel for="firstname" value="FirstName"/>
                     </p:column>
                     <p:column>
-                        <p:inputText id="firstname" value="#{employeeService.newEmployee.firstName}" required="true" requiredMessage="name field must be filled"/>
+                        <p:inputText id="firstname" value="#{employeeController.newEmployee.firstName}" required="true" requiredMessage="name field must be filled"/>
                     </p:column>
                 </p:row>
 
@@ -26,7 +34,7 @@
                         <p:outputLabel for="lastname" value="LastName"/>
                     </p:column>
                     <p:column>
-                        <p:inputText id="lastname" value="#{employeeService.newEmployee.lastName}" required="true" requiredMessage="name field must be filled"/>
+                        <p:inputText id="lastname" value="#{employeeController.newEmployee.lastName}" required="true" requiredMessage="name field must be filled"/>
                     </p:column>
                 </p:row>
 
@@ -35,7 +43,7 @@
                         <p:outputLabel for="username" value="UserName"/>
                     </p:column>
                     <p:column>
-                        <p:inputText id="username" value="#{employeeService.newEmployee.userName}" validator="#{employeeService.validateUserName}" required="true" requiredMessage="username field must be filled"/>
+                        <p:inputText id="username" value="#{employeeController.newEmployee.userName}" validator="#{employeeController.validateUserName}" required="true" requiredMessage="username field must be filled"/>
                         <p:message for="username"/>
                     </p:column>
                 </p:row>
@@ -45,14 +53,14 @@
                         <p:outputLabel for="password" value="Password"/>
                     </p:column>
                     <p:column>
-                        <p:inputText id="password" value="#{employeeService.newEmployee.password}" required="true" requiredMessage="password field must be filled"/>
+                        <p:inputText id="password" value="#{employeeController.newEmployee.password}" required="true" requiredMessage="password field must be filled"/>
                         <p:message for="password"/>
                     </p:column>
                 </p:row>
 
                 <p:row>
                     <p:column colspan="2">
-                        <p:commandButton value="Submit" actionListener="#{employeeService.insertEmployee(employeeService.newEmployee)}" update="createForm" onsuccess="window.location.href='/timesheet-manager/user-list.xhtml'"/>
+                        <p:commandButton styleClass="w-full" value="Submit" action="#{employeeController.insertEmployee(employeeController.newEmployee)}" update="createForm"/>
                     </p:column>
                 </p:row>
             </p:panelGrid>

@@ -11,19 +11,23 @@
 <ui:composition>
     <h:form>
         <p:panel>
-            <p:panelGrid id="profileForm">
-                <p:row>
-                    <p:column colspan="2">
-                        <h:outputText value="Employee Information"/>
-                    </p:column>
-                </p:row>
+            <p:panelGrid styleClass="mx-auto" id="profileForm">
+                <p:growl class="growl" showDetail="true"/>
+
+                <f:facet name="header">
+                    <p:row>
+                        <p:column colspan="2">
+                            <h:outputText value="My Profile"/>
+                        </p:column>
+                    </p:row>
+                </f:facet>
 
                 <p:row>
                     <p:column>
                         <p:outputLabel for="firstname" value="FirstName"/>
                     </p:column>
                     <p:column>
-                        <p:inputText id="firstname" value="#{employeeService.currentEmployee.firstName}" required="true" requiredMessage="FirstName field must be filled"/>
+                        <p:inputText id="firstname" value="#{employeeController.currentEmployee.firstName}" required="true" requiredMessage="FirstName field must be filled"/>
                         <p:message for="firstname"/>
                     </p:column>
                 </p:row>
@@ -33,7 +37,7 @@
                         <p:outputLabel for="lastname" value="LastName"/>
                     </p:column>
                     <p:column>
-                        <p:inputText id="lastname" value="#{employeeService.currentEmployee.lastName}" required="true" requiredMessage="LastName field must be filled"/>
+                        <p:inputText id="lastname" value="#{employeeController.currentEmployee.lastName}" required="true" requiredMessage="LastName field must be filled"/>
                         <p:message for="lastname"/>
                     </p:column>
                 </p:row>
@@ -52,7 +56,7 @@
                         <p:outputLabel for="username" value="UserName"/>
                     </p:column>
                     <p:column>
-                        <p:inputText id="username" value="#{employeeService.currentEmployee.userName}" validator="#{employeeService.validateUserName}" required="true" requiredMessage="username field must be filled">
+                        <p:inputText id="username" value="#{employeeController.currentEmployee.userName}" validator="#{employeeController.validateUserName}" required="true" requiredMessage="username field must be filled">
                             <f:attribute name="exceptionEmployeeNumber" value="#{authenticationController.token.employeeNumber}"/>
                         </p:inputText>
                         <p:message for="username"/>
@@ -64,14 +68,14 @@
                         <p:outputLabel for="password" value="Password"/>
                     </p:column>
                     <p:column>
-                        <p:inputText id="password" value="#{employeeService.currentEmployee.password}" required="true" requiredMessage="Password field must be filled"/>
+                        <p:inputText id="password" value="#{employeeController.currentEmployee.password}" required="true" requiredMessage="Password field must be filled"/>
                         <p:message for="password"/>
                     </p:column>
                 </p:row>
 
                 <p:row>
                     <p:column colspan="2">
-                        <p:commandButton value="Submit" actionListener="#{employeeService.updateEmployee(employeeService.currentEmployee)}" update="profileForm"/>
+                        <p:commandButton styleClass="w-full" value="Submit" action="#{employeeController.updateEmployee(employeeController.currentEmployee)}" update="profileForm"/>
                     </p:column>
                 </p:row>
             </p:panelGrid>

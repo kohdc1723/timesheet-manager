@@ -9,42 +9,44 @@
 </head>
 <body>
 <ui:composition>
-    <p:panel>
-        <h:form id="loginForm">
-            <p:panelGrid>
-                <p:row>
-                    <p:column colspan="2">
-                        <h:outputText value="Login"/>
-                    </p:column>
-                </p:row>
-                <p:row>
-                    <p:column>
-                        <p:outputLabel for="username" value="UserName"/>
-                    </p:column>
-                    <p:column>
-                        <p:inputText id="username" value="#{credential.userName}" required="true" requiredMessage="UserName cannot be empty"/>
+    <div>
+        <h:form id="loginForm" class="flex h-screen align-content-center">
+            <table class="mx-auto align-self-center w-5 border-solid border-blue-100">
+                <tr class="bg-blue-200 h-3rem">
+                    <th><h:outputText value="Login Form"/></th>
+                </tr>
+                <tr>
+                    <td class="p-1">
+                        <h:outputLabel styleClass="font-bold" for="username" value="UserName"/>
                         <p:message for="username" styleClass="ui-message-error-detail"/>
-                    </p:column>
-                </p:row>
-                <p:row>
-                    <p:column>
-                        <p:outputLabel for="password" value="Password"/>
-                    </p:column>
-                    <p:column>
-                        <p:password id="password" value="#{credential.password}" required="true" requiredMessage="Password cannot be empty">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="p-1">
+                        <p:inputText class="w-full" id="username" value="#{credential.userName}" required="true" requiredMessage="UserName cannot be empty"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="p-1">
+                        <h:outputLabel styleClass="font-bold" for="password" value="Password"/>
+                        <p:message for="password" styleClass="ui-message-error-detail"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="p-1">
+                        <p:password class="w-full" id="password" value="#{credential.password}" required="true" requiredMessage="Password cannot be empty">
                             <f:attribute name="userName" value="#{credential.userName}"/>
                         </p:password>
-                        <p:message for="password" styleClass="ui-message-error-detail"/>
-                    </p:column>
-                </p:row>
-                <p:row>
-                    <p:column colspan="2">
-                        <p:commandButton value="Login" update="loginForm" action="#{authenticationController.authenticateUser(credential)}"/>
-                    </p:column>
-                </p:row>
-            </p:panelGrid>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p:commandButton class="w-full" value="Login" update="loginForm" action="#{authenticationController.authenticateUser(credential)}"/>
+                    </td>
+                </tr>
+            </table>
         </h:form>
-    </p:panel>
+    </div>
 </ui:composition>
 </body>
 </html>

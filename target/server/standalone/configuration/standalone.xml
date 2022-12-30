@@ -452,7 +452,7 @@
     </socket-binding-group>
     <deployments>
         <deployment name="timesheet-manager.war" runtime-name="timesheet-manager.war">
-            <content sha1="8187b45bd2a7f9531e63c29d2e52ce220401a87d"/>
+            <content sha1="309a347dee75e499c3812458a1d52107510f39b4"/>
         </deployment>
     </deployments>
 </server>

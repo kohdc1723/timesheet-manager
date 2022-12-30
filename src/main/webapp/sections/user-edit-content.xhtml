@@ -11,10 +11,23 @@
 <ui:composition>
     <h:form>
         <p:panel>
-            <p:panelGrid id="employeeEditForm">
+            <p:panelGrid styleClass="mx-auto" id="employeeEditForm">
+                <p:growl id="growl" showDetail="true"/>
+
+                <f:facet name="header">
+                    <p:row>
+                        <p:column colspan="2">
+                            <h:outputText value="Employee Edit"/>
+                        </p:column>
+                    </p:row>
+                </f:facet>
+
                 <p:row>
-                    <p:column colspan="2">
-                        <h:outputText value="Employee Edit"/>
+                    <p:column>
+                        <p:outputLabel for="empNum" value="EmployeeNumber"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="empNum" value="#{employeeController.editableEmployee.employeeNumber}" disabled="true"/>
                     </p:column>
                 </p:row>
 
@@ -23,7 +36,7 @@
                         <p:outputLabel for="firstname" value="FirstName"/>
                     </p:column>
                     <p:column>
-                        <p:inputText id="firstname" value="#{employeeService.editableEmployee.firstName}" required="true" requiredMessage="name field must be filled"/>
+                        <p:inputText id="firstname" value="#{employeeController.editableEmployee.firstName}" required="true" requiredMessage="name field must be filled"/>
                     </p:column>
                 </p:row>
 
@@ -32,16 +45,7 @@
                         <p:outputLabel for="lastname" value="LastName"/>
                     </p:column>
                     <p:column>
-                        <p:inputText id="lastname" value="#{employeeService.editableEmployee.lastName}" required="true" requiredMessage="name field must be filled"/>
-                    </p:column>
-                </p:row>
-
-                <p:row>
-                    <p:column>
-                        <p:outputLabel for="empNum" value="EmployeeNumber"/>
-                    </p:column>
-                    <p:column>
-                        <p:inputText id="empNum" value="#{employeeService.editableEmployee.employeeNumber}" disabled="true"/>
+                        <p:inputText id="lastname" value="#{employeeController.editableEmployee.lastName}" required="true" requiredMessage="name field must be filled"/>
                     </p:column>
                 </p:row>
 
@@ -50,8 +54,8 @@
                         <p:outputLabel for="username" value="UserName"/>
                     </p:column>
                     <p:column>
-                        <p:inputText id="username" value="#{employeeService.editableEmployee.userName}" validator="#{employeeService.validateUserName}" required="true" requiredMessage="username field must be filled">
-                            <f:attribute name="exceptionEmployeeNumber" value="#{employeeService.editableEmployee.employeeNumber}"/>
+                        <p:inputText id="username" value="#{employeeController.editableEmployee.userName}" validator="#{employeeController.validateUserName}" required="true" requiredMessage="username field must be filled">
+                            <f:attribute name="exceptionEmployeeNumber" value="#{employeeController.editableEmployee.employeeNumber}"/>
                         </p:inputText>
                         <p:message for="username"/>
                     </p:column>
@@ -62,14 +66,14 @@
                         <p:outputLabel for="password" value="Password"/>
                     </p:column>
                     <p:column>
-                        <p:inputText id="password" value="#{employeeService.editableEmployee.password}" required="true" requiredMessage="password field must be filled"/>
+                        <p:inputText id="password" value="#{employeeController.editableEmployee.password}" required="true" requiredMessage="password field must be filled"/>
                         <p:message for="password"/>
                     </p:column>
                 </p:row>
 
                 <p:row>
                     <p:column colspan="2">
-                        <p:commandButton value="Submit" actionListener="#{employeeService.updateEmployee(employeeService.editableEmployee)}" update="employeeEditForm"/>
+                        <p:commandButton styleClass="w-full" value="Submit" action="#{employeeController.updateEmployee(employeeController.editableEmployee)}" update="employeeEditForm"/>
                     </p:column>
                 </p:row>
             </p:panelGrid>

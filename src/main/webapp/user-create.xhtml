@@ -12,14 +12,12 @@
     <ui:composition template="/templates/layout.xhtml">
         <ui:define name="header">
             <ui:include src="/sections/header.xhtml"/>
+            <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         </ui:define>
 
         <ui:define name="content">
             <ui:include src="/sections/user-create-content.xhtml"/>
-        </ui:define>
-
-        <ui:define name="footer">
-            <ui:include src="/sections/footer.xhtml"/>
+            <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         </ui:define>
     </ui:composition>
 </h:body>

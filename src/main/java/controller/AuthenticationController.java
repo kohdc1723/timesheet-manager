@@ -1,12 +1,12 @@
 package controller;
 
 import client.AuthenticationClient;
-import enums.AuthenticationMessage;
+//import enums.AuthenticationMessage;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
-import jakarta.faces.component.UIComponent;
+//import jakarta.faces.component.UIComponent;
 import jakarta.faces.context.FacesContext;
-import jakarta.faces.validator.ValidatorException;
+//import jakarta.faces.validator.ValidatorException;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import model.Credential;
@@ -22,6 +22,8 @@ public class AuthenticationController implements Serializable {
     /* member variables */
     @Inject
     private AuthenticationClient authenticationClient;
+    @Inject
+    private EmployeeController employeeController;
     private Token token;
 
     /* constructor */
@@ -46,6 +48,8 @@ public class AuthenticationController implements Serializable {
             Token token = new Token(tokenId, tokenString, employeeNumber, expiryDateTime);
             setToken(token);
 
+            employeeController.setCurrentEmployee(employeeController.getEmployee(employeeNumber));
+
             return true;
         } else {
             String message = jsonResponse.getString("result");
@@ -62,8 +66,11 @@ public class AuthenticationController implements Serializable {
         }
     }
 
-    public void logout() {
+    public String logout() {
+        System.out.println("logout");
         setToken(null);
+
+        return "/index";
     }
 
     public Token getToken() {

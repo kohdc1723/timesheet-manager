@@ -81,5 +81,5 @@ CREATE TABLE Tokens (
     `EmployeeNumber` TINYINT UNSIGNED NOT NULL,
     `ExpiryDateTime` DATETIME NOT NULL,
     PRIMARY KEY (TokenID),
-    FOREIGN KEY (EmployeeNumber) REFERENCES Employees (EmployeeNumber)
+    FOREIGN KEY (EmployeeNumber) REFERENCES Employees (EmployeeNumber) ON DELETE CASCADE
 );

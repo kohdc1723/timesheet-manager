@@ -9,18 +9,19 @@
 </head>
 <body>
     <ui:composition>
+        <h1 class="flex align-items-center bg-blue-700 text-white m-0 h-4rem pl-2">Timesheet Manager</h1>
         <h:form>
             <p:tabMenu activeIndex="#{param.i}">
-                <p:menuitem value="Home" outcome="/main">
+                <p:menuitem icon="pi pi-home" value="Home" outcome="/main">
                     <f:param name="i" value="0"/>
                 </p:menuitem>
-                <p:menuitem value="Admin Dashboard" outcome="/user-list" disabled="#{!employeeService.isAdmin(authenticationController.token.employeeNumber)}">
+                <p:menuitem icon="pi pi-server" value="Admin Dashboard" outcome="/user-list" disabled="#{!employeeController.isAdmin(authenticationController.token.employeeNumber)}">
                     <f:param name="i" value="1"/>
                 </p:menuitem>
-                <p:menuitem value="My Profile" outcome="/profile">
+                <p:menuitem icon="pi pi-user" value="My Profile" outcome="/profile">
                     <f:param name="i" value="2"/>
                 </p:menuitem>
-                <p:menuitem value="Log Out" outcome="/index" action="#{authenticationController.logout}">
+                <p:menuitem class="" icon="pi pi-sign-out" value="Sign Out" action="#{authenticationController.logout}">
                     <f:param name="i" value="3"/>
                 </p:menuitem>
             </p:tabMenu>

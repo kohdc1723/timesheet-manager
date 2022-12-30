@@ -6,20 +6,13 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
-    <title>Assignment1</title>
+    <title>Timesheet Manager</title>
 </h:head>
 <h:body>
     <ui:composition template="/templates/layout.xhtml">
-        <ui:define name="header">
-            <ui:include src="/sections/index-header.xhtml"/>
-        </ui:define>
-
         <ui:define name="content">
             <ui:include src="/sections/login-content.xhtml"/>
-        </ui:define>
-
-        <ui:define name="footer">
-            <ui:include src="/sections/footer.xhtml"/>
+            <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         </ui:define>
     </ui:composition>
 </h:body>
